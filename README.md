@@ -1,25 +1,35 @@
-# Steps that I followed
+## Laravel 8 Sample Blog EXAMPLE
 
-# User Login
-For the user login part, since laravel has a predefined package and it is called so, I will not use that, therefore, I will use my model with name of login insted of user, since it is already here.
+This is a sample project where you authenticate a user and if he is authenticated successfully,   the user can see news of the bolg, otherwise the user is not allowed to see the news.
+This proejct was developed under a short peroid of time and was done for a test purpose, so, maybe some parts of it would needs improvements but for the sake of history I will not change a single bit of the wrriten code.
 
-I have created model, migrations and controller for the login(user) table, along with the api route
+## Configuarations
+    1- Configure your database in the .env file
+    2- Run "composer install"
+    3- Generate the application key via this command : "php artisan key:generate"
+    4- Run migrations via this command: "php artisan migrate"
+    
+    
+## Project Parts
 
-by following path, post request you can add users to your blog login table.
-http://127.0.0.1:8000/api/logins
+### 1- User Creation
+This is API based developed application and for inserting new users to the databse you will need to use api and some tools like postman to send the data in JSON format to the server.
+### API EndPoints
+    Users GET All http://localhost:8000/api/logins
+    Users POST Create http://localhost:8000/api/logins
+    
+    
+### 2- NEWS 
+This is API based developed application and for managing reading the news of the blog by authentication, you will need to use api and some tools like postman to read data from database and send your username and passowrd via the post method in order to get authenticated, and you shoud send data in JSON format to the server.
 
-
-if you want to the list of users, you can do a get request to the below route
-
-http://127.0.0.1:8000/api/logins
-
-
-====================================================================================
-# for the news part
-I have the model, migration, and controller, pluse a fake data seeder so that I have some records to play with.
-
-
-and I request to get the 10 news for my blog via the post request to the below url 
-http://127.0.0.1:8000/api/news
-
-after the request is done, the controller check the user, if he exist in database or not and the if he exist and the password is correct and he is authenticated, the list of 10 news is shown to the user.
+### API EndPoints
+    To Get the news send the data in JSON format to the below link:
+    
+    News- POST http://localhost:8000/api/news
+    
+    Data Should be like :
+    {
+      "name":"mr.x",
+      "password": "whatever"
+    }
+    
